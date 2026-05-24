@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
+using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.Random;
 using ModSmith.Models;
 
@@ -27,13 +28,13 @@ class CoinFlip : ModSmithCardModel
     var goldValue = DynamicVars.Gold.IntValue;
     if (heads)
     {
-      TalkCmd.Play(new LocString("cards", $"{base.Id.Entry}.headsBanter"), Owner.Creature, 1.5);
+      TalkCmd.Play(new LocString("cards", $"{base.Id.Entry}.headsBanter"), Owner.Creature, VfxColor.Green, VfxDuration.Standard);
       NCombatRoom.Instance?.PlaySplashVfx(Owner.Creature, StsColors.green);
       await PlayerCmd.GainGold(goldValue, Owner);
     }
     else
     {
-      TalkCmd.Play(new LocString("cards", $"{base.Id.Entry}.tailsBanter"), Owner.Creature, 1.5);
+      TalkCmd.Play(new LocString("cards", $"{base.Id.Entry}.tailsBanter"), Owner.Creature, VfxColor.Red, VfxDuration.Standard);
       NCombatRoom.Instance?.PlaySplashVfx(Owner.Creature, StsColors.red);
       goldValue = base.IsUpgraded ? goldValue / 2 : goldValue;
       await PlayerCmd.LoseGold(goldValue, Owner);
