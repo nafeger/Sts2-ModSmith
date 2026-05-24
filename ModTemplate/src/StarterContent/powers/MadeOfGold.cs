@@ -25,7 +25,7 @@ public sealed class MadeOfGold : ModSmithPowerModel
     Creature? dealer,
     CardModel? cardSource)
   {
-    if (target == Owner && dealer?.Player != null && result.UnblockedDamage > 0 && props.IsPoweredAttack())
+    if (target == Owner && dealer?.Player != null && result.UnblockedDamage > 0 && props.HasFlag(ValueProp.Move) && !props.HasFlag(ValueProp.Unpowered))
     {
       Flash();
       await PlayerCmd.GainGold(Amount, dealer.Player);
