@@ -30,6 +30,6 @@ public sealed class GoldPaint : ModSmithPotionModel
   {
     AssertValidForTargetedPotion(target);
     NCombatRoom.Instance?.PlaySplashVfx(target, StsColors.gold);
-    await PowerCmd.Apply<MadeOfGold>(target, DynamicVars[typeof(MadeOfGold).Name].BaseValue, target, null);
+    await PowerCmd.Apply<MadeOfGold>(choiceContext, target, DynamicVars[typeof(MadeOfGold).Name].BaseValue, target, null, false);
   }
 }

@@ -1,6 +1,7 @@
 using ModSmith.Models;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -21,7 +22,7 @@ public sealed class GoldArmor : ModSmithRelicModel
 
   protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.Static(StaticHoverTip.Block)];
 
-  public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
+  public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
   {
     if (side == Owner.Creature.Side && Owner.Gold >= DynamicVars.Gold.IntValue)
     {
