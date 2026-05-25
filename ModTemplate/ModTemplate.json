@@ -4,8 +4,8 @@
   "author": "your-name",
   "description": "Mod for Slay the Spire 2",
   "version": "v0.0.0",
-  "has_pck": false,
+  "has_pck": true,
   "has_dll": true,
-  "dependencies": [{ "id": "ModSmith", "minVersion": "v0.0.1" }],
+  "dependencies": ["ModSmith"],
   "affects_gameplay": true
 }
